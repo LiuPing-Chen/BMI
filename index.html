@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI 計算器</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 50px; 
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #8ec5fc, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container { 
+            max-width: 350px; 
+            margin: auto; 
+            padding: 20px; 
+            border: 2px solid #fff; 
+            border-radius: 15px; 
+            background: rgba(255, 255, 255, 0.8); 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 5px;
+        }
+        button { 
+            padding: 10px 15px; 
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4); 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 5px;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        button:hover { 
+            background: linear-gradient(135deg, #ff758c, #ff7eb3); 
+            transform: scale(1.05);
+        }
+        h3 { color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: #ff758c;">BMI 計算器</h2>
+        <label for="height">身高 (公分):</label>
+        <input type="number" id="height" placeholder="輸入身高" required>
+        
+        <label for="weight">體重 (公斤):</label>
+        <input type="number" id="weight" placeholder="輸入體重" required>
+        
+        <button onclick="calculateBMI()">計算 BMI</button>
+        
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            let height = parseFloat(document.getElementById("height").value) / 100;
+            let weight = parseFloat(document.getElementById("weight").value);
+            
+            if (height > 0 && weight > 0) {
+                let bmi = (weight / (height * height)).toFixed(2);
+                let message = "您的 BMI 是: " + bmi;
+                if (bmi < 18.5) {
+                    message += " (過瘦)";
+                } else if (bmi > 24) {
+                    message += " (過重)";
+                } else {
+                    message += " (體重正常)";
+                }
+                document.getElementById("result").innerText = message;
+            } else {
+                document.getElementById("result").innerText = "請輸入有效的身高和體重。";
+            }
+        }
+    </script>
+</body>
+</html>
+echo "# LiuPing-Chen.github.io" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/LiuPing-Chen/LiuPing-Chen.github.io.git
+git push -u origin main
